@@ -7,17 +7,21 @@ import UserContext from './Control/userContext'
 import Auth from './Pages/Auth'
 import Layout from './Components/Layout'
 import Home from './Pages/Home'
+import User from './Pages/User'
+import Admin from './Pages/Admin'
 
 
 function App() {
-  const [User, setUser] = useState(null)
+  const [user, setUser] = useState(null)
   return (
     <>
-      <UserContext.Provider value={[User,setUser]}>
+      <UserContext.Provider value={[user,setUser]}>
         <BrowserRouter>
           <Routes>
             <Route path='/' element={<Home/>} />
             <Route path='/auth' element={<Auth></Auth>}/>
+            <Route path='/user' element={<User/>} />
+            <Route path='/admin' element={<Admin/>}></Route>
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>

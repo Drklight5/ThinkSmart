@@ -1,12 +1,45 @@
 @import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&display=swap');
 
 :root{
-  --primary: #123;
+  --primary: #19647E;
+  --secondary: #EE964B;
+  --warning: #F4D35E;
+  --danger: #CB4D4D;
+  --success:#499F68;
+  --info: #28AFB0;
+  --dark: #3B525B;
+  --light: #D9D9D9;
+
+
 }
 
 *{
-      font-family: "Luckiest Guy", cursive;
-      font-weight: 400;
-      font-style: normal;
-      color: var(--primary);
+  margin: 0;
+
+  font-family: "Luckiest Guy", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
+
+.t-white{
+  color: white;
+}
+
+.bg-white{
+  background-color: white;
+}
+.bg-secondary{
+  background-color: var(--secondary);
+}
+
+/* TEXT SIZES */
+
+.ts-1{
+  font-size: calc(2rem + 2vw);
+}
+
+/* TEXT ALIGN */
+.t-center{
+  text-align: center;
+}
+

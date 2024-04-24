@@ -2,21 +2,45 @@
 import { useContext } from "react"
 import UserContext from "../Control/userContext"
 import { useNavigate } from "react-router-dom"
-
+import "./Auth.css"
 
 export default function Auth() {
     const [User, setUser] = useContext(UserContext)
     const navigate = useNavigate()
 
     const logIn = () => {
-        setUser({username: "MyUser", id: "123"})
-        
+        // Set User, then redirects
+        setUser({username: "MyUser", id: "123", role: "User"})
         navigate("/")
     }
+    const logInA = () => {
+        setUser({ username: "MyUser", id: "123", role: "Admin" })
+        navigate("/")
+    }
+
   return (
-    <div>
-        <h1>Auth</h1>
-        <button onClick={logIn}>LogIn</button>
+    <div className="container">
+        <div className="banner">
+
+        </div>
+        <div className="logIn">
+            <h1 className="t-white ts-1 t-center">Inciar sesion</h1>
+            <div className="">
+                <label htmlFor="">Usuario</label>
+                <br />
+                <input type="text" />
+                <br />
+                <label htmlFor="">Password</label>
+                <br />
+                <input type="password" name="" id="" />
+                <br />
+
+                
+                <button className="bg-secondary t-white" onClick={logInA}>LogIn as Administrator</button>
+                <br />
+                <button className="bg-secondary t-white" onClick={logIn}>LogIn as User</button>
+            </div>
+        </div>
     </div>
   )
 }

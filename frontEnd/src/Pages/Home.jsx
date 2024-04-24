@@ -7,14 +7,15 @@ import { Navigate } from "react-router-dom"
 function Home() {
 	const [User, setUser] = useContext(UserContext)
 
-	if (User == null) {
-		return <Navigate to="/auth" />
+	// Redirect if no user is logged
+	if (User == null || User == undefined) return <Navigate to="/auth" />
+	
+	if (Object.prototype.hasOwnProperty.call(User, "role")){
+		if (User.role == "User") return <Navigate to="/user" />
+		if (User.role == "Admin") return <Navigate to="/admin" />
 	}
-	return (
-		<div>
-			<h1>{User.username}</h1>
-		</div>
-	)
+	
+	return <Navigate to="/auth" />
 }
 
 export default Home
