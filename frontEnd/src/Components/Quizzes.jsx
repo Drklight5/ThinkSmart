@@ -1,5 +1,4 @@
 import Quiz from "./Quiz";
-import "./components.css"
 
 export default function Quizzes() {
     const list_quiz = [

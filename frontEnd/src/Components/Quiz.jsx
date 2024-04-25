@@ -1,7 +1,5 @@
 /* eslint-disable react/prop-types */
 
-import "./components.css"
-
 export default function Quiz({quiz}) {
   return (
     <div className="quiz">

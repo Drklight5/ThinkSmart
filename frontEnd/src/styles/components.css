@@ -1,0 +1,69 @@
+.quizzes {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 3rem;
+    gap: 3rem;
+    padding: 0 1rem;
+    margin-bottom: 3rem;
+}
+
+.quiz {
+    background-color: white;
+    padding: 1.5rem;
+    box-shadow: -4px 4px 4px rgba(0, 0, 0, 25%);
+}
+
+@media (min-width: 900px) {
+    .quizzes {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0;
+    }
+}
+
+
+
+.show-user {
+    position: fixed;
+    right: 0;
+    top: 1rem;
+
+    padding: .5rem 2rem;
+    display: flex;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, .25);
+
+    background-color: white;
+
+    z-index: 30;
+
+}
+
+.user-icon {
+    margin-left: 1rem;
+    border-radius: 50%;
+    height: 1.5rem;
+    width: 1.5rem;
+    display: inline-block;
+    background-color: var(--primary);
+}
+
+
+.f1 {
+
+    height: 100vh;
+    width: 100vw;
+    position: fixed;
+    overflow: hidden;
+    z-index: 10;
+}
+
+.f-square {
+    position: relative;
+    left: 10%;
+    top: 30%;
+    transform: rotate(30deg);
+    background-color: var(--light);
+    opacity: .25;
+    height: calc(100vmin + 300px);
+    width: calc(100vmin + 300px);
+}

@@ -1,7 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useContext} from "react"
 import UserContext from "../Control/userContext"
-import "./ShowUser.css"
 
 export default function ShowUser() {
     const [User, setUser] = useContext(UserContext)

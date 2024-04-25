@@ -2,10 +2,8 @@
 
 import { useContext, useState } from 'react'
 import {BrowserRouter, Routes, Route, Navigate} from 'react-router-dom'
-import './App.css'
 import UserContext from './Control/userContext'
 import Auth from './Pages/Auth'
-import Layout from './Components/Layout'
 import Home from './Pages/Home'
 import User from './Pages/User'
 import Admin from './Pages/Admin'
