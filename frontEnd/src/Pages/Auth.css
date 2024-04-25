@@ -28,7 +28,7 @@
  }
 
  @media screen and (max-width: 600px) {
-     .container {
+     .container-auth {
          grid-template-columns: 100%;
          grid-template-rows: 30% 70%;
      }

@@ -1,0 +1,19 @@
+.addQuiz{
+    width: 4.5rem;
+    height: 4.5rem;
+    font-size: 4rem;
+    border-radius: 50%;
+    background-color: var(--secondary);
+    color:white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.flex{
+    display: flex;
+}
+
+.fx-j-cen{
+    justify-content: center;
+}
