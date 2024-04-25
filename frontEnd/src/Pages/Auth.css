@@ -1,5 +1,5 @@
 
- .container {
+ .container-auth {
      display: grid;
      height: 100vh;
      grid-template-columns: 60% 40%;

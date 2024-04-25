@@ -28,13 +28,18 @@
 .bg-white{
   background-color: white;
 }
+
 .bg-secondary{
   background-color: var(--secondary);
 }
 
+.bg-info{
+  background-color: var(--info);
+}
+
 /* TEXT SIZES */
 
-.ts-1{
+.ts-1, h1{
   font-size: calc(2rem + 2vw);
 }
 

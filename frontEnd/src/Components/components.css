@@ -1,0 +1,20 @@
+.quizzes {
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 3rem;
+    gap: 3rem;
+    padding: 0 1rem;
+}
+
+.quiz {
+    background-color: white;
+    padding: 1.5rem;
+}
+
+@media (min-width: 900px) {
+    .quizzes {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0;
+    }
+}

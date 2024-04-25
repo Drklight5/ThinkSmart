@@ -19,7 +19,7 @@ export default function Auth() {
     }
 
   return (
-    <div className="container">
+    <div className="container-auth">
         <div className="banner">
 
         </div>
