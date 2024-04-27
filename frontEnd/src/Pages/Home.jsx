@@ -10,11 +10,7 @@ import ShowUser from "../Components/ShowUser";
 
 function Home() {
 	const [user, setUser] = useContext(UserContext);
-	useEffect(() => {
-		fetch("https://2c23272e-d0ae-42e6-b380-ada411b0bfac-00-33bq6fdrpbiu1.kirk.replit.dev/")
-	
-	}, [])
-	
+
 	// Redirect if no user is logged in
 	if (user == null || user === undefined) return <Navigate to="/auth" />;
 
