@@ -16,10 +16,8 @@ function App() {
       <UserContext.Provider value={[user,setUser]}>
         <BrowserRouter>
           <Routes>
-            <Route path='/' element={<Home/>} />
-            <Route path='/auth' element={<Auth></Auth>}/>
-            <Route path='/user' element={<User/>} />
-            <Route path='/admin' element={<Admin/>}></Route>
+            <Route path='/auth' element={<Auth></Auth>} />
+            <Route path='/*' element={<Home />} />
           </Routes>
         </BrowserRouter>
       </UserContext.Provider>

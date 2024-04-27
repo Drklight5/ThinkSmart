@@ -1,20 +1,24 @@
-import Fondo from "../Components/Fondo"
+import { Route, Routes } from "react-router-dom"
 import Quizzes from "../Components/Quizzes"
-import ShowUser from "../Components/ShowUser"
+import Edit from "./Edit"
 
 function Admin() {
   return (
     <div>
-      <Fondo></Fondo>
-      <ShowUser></ShowUser>
-      <div className="container">
-        <h1 className=""> QUIZZES</h1>
-        <Quizzes></Quizzes>
-        <div className="flex fx-j-cen"> 
-          <div className="addQuiz">+</div>
-        </div>
+      <Routes>
+          <Route path="/edit" element={<Edit/>} />
 
-      </div>
+          <Route path="/" element={
+            <>
+              <h1 className=""> QUIZZES</h1>
+              <Quizzes></Quizzes>
+                <div className="flex fx-j-cen"> 
+                  <div className="addQuiz">+</div>
+                </div>
+            </>
+          }/>
+      </Routes>
+      
     </div>
   )
 }

@@ -9,11 +9,11 @@ export default function Auth() {
     const logIn = () => {
         // Set User, then redirects
         setUser({username: "MyUser", id: "123", role: "User"})
-        navigate("/")
+        navigate("/user")
     }
     const logInA = () => {
         setUser({ username: "MyUser", id: "123", role: "Admin" })
-        navigate("/")
+        navigate("/admin")
     }
 
   return (
