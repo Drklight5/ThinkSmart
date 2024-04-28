@@ -4,6 +4,8 @@ import { quizJ } from "../test/quix";
 import QuizContext from "../Control/quizContext";
 import Question from "../Components/Quiz/Question";
 import Options from "../Components/Quiz/Options";
+import Send from "../Components/Quiz/Send";
+import Avatars from "../Components/Quiz/Avatars";
 
 export default function Play() {
     const {id} = useParams();
@@ -22,7 +24,9 @@ export default function Play() {
             
             <h1 className="t-white">{quiz.name}</h1>
             <Question></Question>
+            <Avatars></Avatars>
             <Options></Options>
+            <Send></Send>
 
        </QuizContext.Provider>
     </>

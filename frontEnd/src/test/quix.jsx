@@ -8,27 +8,27 @@ export const quizJ = {
             "question": "Selecciona la correcta1",
             "options": 
             [
-                "One",
-                "Two",
-                "Three"
+                "One1",
+                "Two1",
+                "Three1"
             ],
             "correct": 1
         }, 
         {
             "question": "Selecciona la correcta2",
             "options": [
-                "One",
-                "Two",
-                "Three"
+                "One2",
+                "Two2",
+                "Three2"
             ],
             "correct": 0
         }, 
         {
             "question": "Selecciona la correcta3",
             "options": [
-                "One",
-                "Two",
-                "Three"
+                "One3",
+                "Two4",
+                "Three5"
             ],
             "correct": 2
         },

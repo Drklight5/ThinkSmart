@@ -50,3 +50,43 @@
     max-width: 90%;
 
 }
+
+.selectOpt{
+    outline: var(--primary) dashed 3px;
+}
+.selectOpt-true {
+    outline: var(--success) dashed 3px;
+}
+.selectOpt-false {
+    outline: var(--danger) dashed 3px;
+}
+
+.btn-send{
+    text-align: center;
+    margin: auto;
+    margin-top: 2rem;
+    margin-bottom: 2rem;
+    padding: 1rem;
+    width: 50%;
+}
+
+.avatars{
+    width: 60%;
+    margin:2rem auto ;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+
+}
+.avatars > div {
+    height: 3rem;
+    width: 3rem;
+    border-radius: 50%;
+    background-color: var(--primary);
+   
+}
+
+div.main-avatar{
+    height: 5rem;
+    width: 5rem;
+}
