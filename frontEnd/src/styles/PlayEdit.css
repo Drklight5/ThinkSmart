@@ -48,7 +48,11 @@
     margin-top: 1.5rem;
     width: 50%;
     max-width: 90%;
+    cursor: pointer;
 
+}
+.pointer{
+    cursor: pointer;
 }
 
 .selectOpt{
@@ -89,4 +93,35 @@
 div.main-avatar{
     height: 5rem;
     width: 5rem;
+}
+
+.confidence-selector {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.confidence-level {
+    padding: 10px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+}
+
+.confidence-level.active {
+    background-color: #eee;
+}
+
+.trust-div{
+    width: 50%;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.trust{
+    width: 100%;
+}
+.trust-labels{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
 }

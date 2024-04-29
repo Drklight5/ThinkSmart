@@ -67,3 +67,11 @@
     height: calc(100vmin + 300px);
     width: calc(100vmin + 300px);
 }
+
+.btn{
+    cursor: pointer;
+}
+
+.pointer{
+    cursor: pointer;
+}

@@ -9,7 +9,7 @@ export default function Send() {
     let a = qs != null && q != undefined 
 
     const style = () => {
-        let s = a ? "bg-secondary": "bg-secondary-off"
+        let s = a ? "pointer bg-secondary": "bg-secondary-off"
         return "t-white btn-send " + s
     }
 

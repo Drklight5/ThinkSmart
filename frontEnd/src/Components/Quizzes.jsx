@@ -7,13 +7,12 @@ export default function Quizzes() {
   const [quizzes, setQuizzes] = useState(quizz); // Use plural for an array
 
   // useEffect(() => {
-  // //   fetch("../test/quizzes.json")
-  // //     .then((response) => response.json())
-  // //     .then((data) => setQuizzes(data)) 
-  // //     .catch((error) => console.error(error)); 
-  // // }
-  //   // fetch("https://a00835977.pythonanywhere.com/")
+  //   fetch("../test/quizzes.json")
+  //     .then((response) => response.json())
+  //     .then((data) => setQuizzes(data)) 
+  //     .catch((error) => console.error(error)); 
   // }
+    
   // , []); 
 
   return (
