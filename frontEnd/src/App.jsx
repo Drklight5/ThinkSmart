@@ -7,6 +7,8 @@ import Auth from './Pages/Auth'
 import Home from './Pages/Home'
 import User from './Pages/User'
 import Admin from './Pages/Admin'
+import Play from './Pages/Play'
+import Create from './Pages/Create'
 
 
 function App() {

@@ -31,8 +31,18 @@
   background-color: white;
 }
 
+.bg-whiteE{
+  background-color: white;
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
+}
+
+.bg-whiteE input {
+  border: none;
+}
+
 .bg-secondary{
   background-color: var(--secondary);
+  box-shadow: 0px 4px 8px 0px rgba(0, 0, 0, 0.2);
 }
 .bg-secondary-off {
   background-color: var(--secondary-off);

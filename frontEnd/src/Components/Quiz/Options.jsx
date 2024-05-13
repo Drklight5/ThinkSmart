@@ -38,7 +38,7 @@ export default function Options() {
   } 
 
   return (
-    <div className="options">
+    <div className="d-options">
         {options?.map((opt, i) =>
             <div key={i} 
               onClick={() => select(i)}
