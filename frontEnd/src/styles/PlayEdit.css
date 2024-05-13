@@ -97,13 +97,13 @@
 }
 
 .selectOpt{
-    outline: var(--primary) dashed 3px;
+    outline: var(--primary) dashed 5px;
 }
 .selectOpt-true {
-    outline: var(--success) dashed 3px;
+    outline: var(--success) dashed 5px;
 }
 .selectOpt-false {
-    outline: var(--danger) dashed 3px;
+    outline: var(--danger) dashed 5px;
 }
 
 .btn-send{

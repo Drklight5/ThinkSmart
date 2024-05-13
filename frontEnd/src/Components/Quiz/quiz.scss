@@ -6,7 +6,7 @@ $number-of-options: 3;
 	flex-direction: column;
 	align-items: center;
 }
-form {
+.confidence {
 	width: 90%;
 	max-width: 500px;
 	#form-title {
@@ -21,7 +21,9 @@ form {
 		position: relative;
 		width: 100%;
 		height: 50px;
+		-webkit-user-select: none;
 		user-select: none;
+
 		&::before {
 			content: " ";
 			position: absolute;
@@ -31,11 +33,12 @@ form {
 			top: 50%;
 			left: 50%;
 			transform: translate(-50%, -50%);
-			background: #000;
+			background: var(--primary);
 		}
 		input, label {
 			box-sizing: border-box;
 			flex: 1;
+			-webkit-user-select: none;
 			user-select: none;
 			cursor: pointer;
 		}
@@ -44,6 +47,7 @@ form {
 			position: relative;
 			width: 20%;
 			height: 100%;
+			-webkit-user-select: none;
 			user-select: none;
 			&::before {
 				content: attr(data-debt-amount);
@@ -66,10 +70,11 @@ form {
 				transform: translate(-50%, -50%);
 				width: 30px;
 				height: 30px;
-				border: 2px solid #000;
+				border: 3px solid var(--primary);
 				background: #fff;
 				border-radius: 50%;
 				pointer-events: none;
+				-webkit-user-select: none;
 				user-select: none;
 				z-index: 1;
 				cursor: pointer;
@@ -95,7 +100,7 @@ form {
 				}
 				@for $i from 1 through $number-of-options {
 					&:nth-child(#{$i * 2 - 1}) ~ #debt-amount-pos {
-						left: #{($i * 20%) - 10%};
+						left: #{($i * 32.5%) - 15%};
 					}
 				}
 			}
@@ -106,7 +111,7 @@ form {
 			top: 50%;
 			width: 12px;
 			height: 12px;
-			background: #000;
+			background: var(--primary);
 			border-radius: 50%;
 			transition: all 0.15s ease-in-out;
 			transform: translate(-50%, -50%);
@@ -140,9 +145,10 @@ form {
 		font-size: 24px;
 		font-weight: 600;
 		background: #fff;
-		border: 2px solid #000;
+		border: 2px solid var(--primary);
 		border-radius: 8px;
 		outline: 0;
+		-webkit-user-select: none;
 		user-select: none;
 		cursor: pointer;
 		&:hover {

@@ -10,23 +10,19 @@ const Trust = () => {
     return (
         <div className="trust-div">
          
-            <div id="form-wrapper">
-                <form >
-                    <p id="form-title">Select Debt Amount</p>
+            <div id="htmlForm-wrapper">
+                <htmlForm className="confidence t-primary">
+                    <p id="htmlForm-title ">Trust</p>
                     <div id="debt-amount-slider">
                         <input type="radio" name="debt-amount" id="1" value="0" required />
-                        <label for="1" data-debt-amount="< $10k"></label>
+                        <label htmlFor="1" data-debt-amount="Bajo"></label>
                         <input type="radio" name="debt-amount" id="2" value="1" required />
-                        <label for="2" data-debt-amount="$10k-25k"></label>
+                        <label htmlFor="2" data-debt-amount="Medio"></label>
                         <input type="radio" name="debt-amount" id="3" value="2" required />
-                        <label for="3" data-debt-amount="$25k-50k"></label>
-                        <input type="radio" name="debt-amount" id="4" value="4" required />
-                        <label for="4" data-debt-amount="$50k-100k"></label>
-                        <input type="radio" name="debt-amount" id="5" value="5" required />
-                        <label for="5" data-debt-amount="$100k+"></label>
+                        <label htmlFor="3" data-debt-amount="Alto"></label>
                         <div id="debt-amount-pos"></div>
                     </div>
-                </form>
+                </htmlForm>
             </div>
 
         </div>
