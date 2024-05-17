@@ -9,6 +9,7 @@ import User from './Pages/User'
 import Admin from './Pages/Admin'
 import Play from './Pages/Play'
 import Create from './Pages/Create'
+import Pruebas from './Pages/Pruebas'
 
 
 function App() {
@@ -18,6 +19,8 @@ function App() {
       <UserContext.Provider value={[user,setUser]}>
         <BrowserRouter>
           <Routes>
+
+            <Route path='/pruebas' element={<Pruebas/>} />
             <Route path='/auth' element={<Auth></Auth>} />
             <Route path='/*' element={<Home />} />
           </Routes>

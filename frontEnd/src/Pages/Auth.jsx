@@ -16,6 +16,10 @@ export default function Auth() {
         navigate("/admin")
     }
 
+    const pruebas = () =>{
+        navigate("/pruebas")
+    }
+
   return (
     <div className="container-auth">
         <div className="banner">
@@ -37,6 +41,9 @@ export default function Auth() {
                 <button className="bg-secondary t-white" onClick={logInA}>LogIn as Administrator</button>
                 <br />
                 <button className="bg-secondary t-white" onClick={logIn}>LogIn as User</button>
+                <br />
+                <button className="bg-secondary t-white" onClick={pruebas}>Iniciar pruebas</button>
+                
             </div>
         </div>
     </div>
