@@ -22,7 +22,9 @@
   font-weight: 400;
   font-style: normal;
 }
-
+.t-primary{
+  color:var(--primary)
+}
 .t-white{
   color: white;
 }
