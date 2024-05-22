@@ -17,3 +17,9 @@
 .fx-j-cen{
     justify-content: center;
 }
+
+.fx-j-rig{
+    display: flex;
+    justify-content: flex-end;
+    width: 100%;
+}

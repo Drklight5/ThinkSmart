@@ -11,6 +11,7 @@ import Play from './Pages/Play'
 import Create from './Pages/Create'
 import Pruebas from './Pages/Pruebas'
 import {Bounce, ToastContainer} from 'react-toastify'
+import Chatbot from './Pages/chatbot'
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
         <BrowserRouter>
           <Routes>
 
+          ||<Route path='/chatbot' element={<Chatbot/>} />
             <Route path='/pruebas' element={<Pruebas/>} />
             <Route path='/auth' element={<Auth></Auth>} />
             <Route path='/*' element={<Home />} />

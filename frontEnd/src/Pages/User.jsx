@@ -1,4 +1,3 @@
-
 import { Link, Route, Routes } from "react-router-dom"
 import Quizzes from "../Components/Quizzes"
 import Play from "./Play"
@@ -15,14 +14,17 @@ function User() {
             <h1 className="t-white"> QUIZZES</h1>
             <Link to="grupo" className="t-white" >Grupos</Link>
             <Quizzes></Quizzes>
+            <div className="flex fx-j-rig">
+              <Link to="/chatbot" style={{ textDecoration: 'none' }}>
+                <button className="bg-secondary t-white">Chatbot</button>
+              </Link>
+            </div>
           </div>
         } />
     </Routes>
     
     </>
-    
-  )
+  );
 }
 
-
-export default User
+export default User;
