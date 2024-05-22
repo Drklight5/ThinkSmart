@@ -10,12 +10,27 @@ import Admin from './Pages/Admin'
 import Play from './Pages/Play'
 import Create from './Pages/Create'
 import Pruebas from './Pages/Pruebas'
+import {Bounce, ToastContainer} from 'react-toastify'
 
 
 function App() {
   const [user, setUser] = useState(null)
   return (
     <>
+      <ToastContainer
+        position="bottom-right"
+        autoClose={5000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        limit={2}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="light"
+        transition:Bounce
+/>
       <UserContext.Provider value={[user,setUser]}>
         <BrowserRouter>
           <Routes>
