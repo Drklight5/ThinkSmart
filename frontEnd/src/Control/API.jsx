@@ -71,7 +71,6 @@ export const _UserManager = {
         return API.call($`user/{uid}`, 'GET', {})
     },
     createUser: (uid, role, name) => { }
-
 }
 
 
