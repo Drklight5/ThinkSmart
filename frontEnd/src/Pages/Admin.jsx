@@ -11,9 +11,8 @@ import { auth } from "../Firebase/firebase"
 
 function Admin() {
   const [user, setUser] = useContext(UserContext)
-  console.log("aaa",user)
 
-  console.log(useAuthState(auth))
+
   return (
     <div>
       <Routes>

@@ -10,6 +10,7 @@ import Admin from './Pages/Admin'
 import Play from './Pages/Play'
 import Create from './Pages/Create'
 import Pruebas from './Pages/Pruebas'
+import NewUser from './Pages/NewUser'
 import {Bounce, ToastContainer} from 'react-toastify'
 import Chatbot from './Pages/chatbot'
 import { useAuthState } from 'react-firebase-hooks/auth'
@@ -42,6 +43,7 @@ function App() {
 
             <Route path='/chatbot' element={<Chatbot/>} />
             <Route path='/pruebas' element={<Pruebas/>} />
+            <Route path='/newUser' element={<NewUser/>} />
             <Route path='/auth' element={<Auth></Auth>} />
             <Route path='/*' element={<Home />} />
           </Routes>

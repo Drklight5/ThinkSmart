@@ -1,5 +1,5 @@
 
-import { toast } from "react-toastify"
+import { Bounce, Zoom, toast } from "react-toastify"
 
 function goodAlert(message) {
     if (message == "") return
@@ -19,7 +19,7 @@ function goodAlert(message) {
 
 function badAlert(message) {
     if (message == "") return
-    toast.error(text, {
+    toast.error(message, {
         position: "bottom-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -33,17 +33,21 @@ function badAlert(message) {
     toast.clearWaitingQueue();
 }
 const API = {
-    URL: "https://bf3b5167-ec87-4848-8e2a-a4d333ed937d-00-1k638g0zqcvv6.riker.replit.dev/",
+    
+    URL: "https://659cf414-2cad-4109-89f5-18ae24f32282-00-19i33a0xukp75.kirk.replit.dev/",
     init: function () {
 
     },
     call: async function (_url, _method, _data, message = "") {
-
-        return await fetch(this.URL + _url, {
-            method: _method,
-            body: _data
-
-        }).then((resp) => {
+        let content = {method: _method}
+        if (_method != 'GET') {
+            content.body = JSON.stringify(_data)
+            content.headers = {
+                'Content-Type': 'application/json'
+            }
+        }
+        return await fetch(this.URL + _url, content)
+        .then((resp) => {
             // ERRORES
             if (resp.status == 401) badAlert("Paso algo mal, inténtalo luego")
             if (resp.status == 403) badAlert("Paso algo mal, inténtalo luego")
@@ -52,12 +56,13 @@ const API = {
             if (resp.status >= 400) return null
 
             // GOOD RESPONSE
-            goodAlert(notification)
+            goodAlert(message)
             return resp.json()
 
-        }).catch(() => {
+        }).catch((e) => {
+            console.log(e)
             // NO INTERNET
-            badAlert("No hay conexión , verifica tu red")
+            //badAlert("No hay conexión , verifica tu red")
             return null
         })
 
@@ -68,9 +73,15 @@ const API = {
 
 export const _UserManager = {
     getUser: (uid) => {
-        return API.call($`user/{uid}`, 'GET', {})
+        return API.call(`getUserOrAdmin?id=${uid}`, 'GET', {})
     },
-    createUser: (uid, role, name) => { }
+
+    createUser: (value) => { 
+        return API.call('addUser', 'POST',value)
+    },
+    createAdmin: (value) => { 
+        return API.call('addAdmin', 'POST', value)
+    }
 }
 
 
