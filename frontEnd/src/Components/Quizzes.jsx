@@ -12,7 +12,6 @@ export default function Quizzes() {
   //     .then((data) => setQuizzes(data)) 
   //     .catch((error) => console.error(error)); 
   // }
-    
   // , []); 
 
   return (

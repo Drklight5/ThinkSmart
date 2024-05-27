@@ -4,8 +4,16 @@ import { useNavigate } from "react-router-dom"
 import Edit from "./Edit"
 import Create from "./Create"
 import Chatbot from "./chatbot" // Asegúrate de que esta ruta es correcta
+import { useContext } from "react"
+import UserContext from "../Control/userContext"
+import { useAuthState } from "react-firebase-hooks/auth"
+import { auth } from "../Firebase/firebase"
 
 function Admin() {
+  const [user, setUser] = useContext(UserContext)
+  console.log("aaa",user)
+
+  console.log(useAuthState(auth))
   return (
     <div>
       <Routes>

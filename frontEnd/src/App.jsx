@@ -12,10 +12,14 @@ import Create from './Pages/Create'
 import Pruebas from './Pages/Pruebas'
 import {Bounce, ToastContainer} from 'react-toastify'
 import Chatbot from './Pages/chatbot'
+import { useAuthState } from 'react-firebase-hooks/auth'
+import { auth } from './Firebase/firebase'
 
 
 function App() {
-  const [user, setUser] = useState(null)
+  let [a] = useAuthState(auth)
+  const [user, setUser] = useState(a)
+
   return (
     <>
       <ToastContainer
@@ -36,7 +40,7 @@ function App() {
         <BrowserRouter>
           <Routes>
 
-          ||<Route path='/chatbot' element={<Chatbot/>} />
+            <Route path='/chatbot' element={<Chatbot/>} />
             <Route path='/pruebas' element={<Pruebas/>} />
             <Route path='/auth' element={<Auth></Auth>} />
             <Route path='/*' element={<Home />} />

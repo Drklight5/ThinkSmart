@@ -10,7 +10,7 @@ import ShowUser from "../Components/ShowUser";
 
 function Home() {
 	const [user, setUser] = useContext(UserContext);
-
+	console.log(user.uid)
 	// Redirect if no user is logged in
 	if (user == null || user === undefined) return <Navigate to="/auth" />;
 
