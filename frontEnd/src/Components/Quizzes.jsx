@@ -1,18 +1,21 @@
-import { useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import Quiz from "./Quiz";
-import {quizz} from "../test/quizzes" 
+import { _QuizManager } from "../Control/API";
+import UserContext from "../Control/userContext";
 
 export default function Quizzes() {
   // eslint-disable-next-line no-unused-vars
-  const [quizzes, setQuizzes] = useState(quizz); // Use plural for an array
+  const [quizzes, setQuizzes] = useState([]); // Use plural for an array
+  const [user, setUser] = useContext(UserContext)
 
-  // useEffect(() => {
-  //   fetch("../test/quizzes.json")
-  //     .then((response) => response.json())
-  //     .then((data) => setQuizzes(data)) 
-  //     .catch((error) => console.error(error)); 
-  // }
-  // , []); 
+  useEffect(() => {
+    getQuiz()
+  }, []);
+
+  const getQuiz = async () => {
+    let quiz = await _QuizManager.getQuizzes(user.id)
+    console.log(quiz)
+  }
 
   return (
     <div className="quizzes">

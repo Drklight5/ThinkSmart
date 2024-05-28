@@ -6,8 +6,7 @@ export default function ShowUser() {
     const [User, setUser] = useContext(UserContext)
   return (
     <div className="show-user">
-        {console.log(User)}
-        User
+        {User.displayName}
         <div className="user-icon">
 
         </div>

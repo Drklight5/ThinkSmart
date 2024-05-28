@@ -15,7 +15,7 @@ function Home() {
 	if (user?.uid == null || user.uid === undefined) return <Navigate to="/auth" />;
 	if (user == null || user === undefined) return <Navigate to="/auth" />;
 
-	const color = "app " + (user.role  == "User" ? "bg-info": "")
+	const color = "app " + (user.role  == "user" ? "bg-info": "")
 
 	// Check for user role and redirect accordingly
 	return (

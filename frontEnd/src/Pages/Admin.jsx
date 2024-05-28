@@ -25,7 +25,7 @@ function Admin() {
               <h1 className=""> QUIZZES</h1>
               <Quizzes></Quizzes>
               <div className="flex fx-j-cen"> 
-                <Link to="/create" style={{ textDecoration: 'none' }}>
+                <Link to="create" style={{ textDecoration: 'none' }}>
                   <button className="addQuiz">+</button>
                 </Link>
               </div>

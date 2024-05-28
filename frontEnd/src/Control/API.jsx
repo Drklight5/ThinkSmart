@@ -80,7 +80,8 @@ export const _UserManager = {
         return API.call('addUser', 'POST',value)
     },
     createAdmin: (value) => { 
-        return API.call('addAdmin', 'POST', value)
+        if (copy.role == 'admin') navigate('/admin')
+
     }
 }
 
@@ -102,7 +103,9 @@ export const _Groups = {
 
 export const _QuizManager = {
     //6 Regresa la lista de quizzes relacionados al usuario
-    getQuizzes: (uid) => { },
+    getQuizzes: (id) => { 
+        return API.call(`ObtenerQuizzesPorUsuario?userID=${id}`, 'GET', {}) 
+    },
     //7 Crea un nuevo quiz role:Admin
     createQuiz: (uid, quiz) => {},
     //8 modifica la informacion de un quiz
