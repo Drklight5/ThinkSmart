@@ -3,8 +3,8 @@
 import { useContext, useEffect, useState } from "react";
 import UserContext from "../Control/userContext";
 import { Navigate, Routes, Route } from "react-router-dom";
-import User from "./User";
-import Admin from "./Admin";
+import User from "./Us/User";
+import Admin from "./Adm/Admin";
 import Fondo from "../Components/Fondo";
 import ShowUser from "../Components/ShowUser";
 

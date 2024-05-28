@@ -19,9 +19,12 @@ export default function Quizzes() {
 
   return (
     <div className="quizzes">
-      {quizzes.map((quiz, index) => (
-        <Quiz quiz={quiz} key={index} />
-      ))}
+      {quizzes.length > 0 ?
+        quizzes.map((quiz, index) => (
+          <Quiz quiz={quiz} key={index} />
+        ))
+        : <p>No hay quizzes</p>
+      }
     </div>
   );
 }
