@@ -1,7 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom"
-import Quizzes from "../Components/Quizzes"
+import Quizzes from "../../Components/Quizzes"
 import Play from "./Play"
-import Grupo from "../Components/Grupo"
+import Grupo from "../../Components/Grupo"
 
 function User() {
   return (

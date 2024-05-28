@@ -1,11 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { useContext } from "react"
-import UserContext from "../Control/userContext"
+import UserContext from "../../Control/userContext"
 import { useNavigate } from "react-router-dom"
-import { auth, provider } from '../Firebase/firebase'
+import { auth, provider } from '../../Firebase/firebase'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from "firebase/auth"
 import { useAuthState } from 'react-firebase-hooks/auth'
-import { _UserManager } from "../Control/API"
+import { _UserManager } from "../../Control/API"
 
 export default function Auth() {
     const [User, setUser] = useContext(UserContext)

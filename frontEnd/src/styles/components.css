@@ -75,3 +75,6 @@
 .pointer{
     cursor: pointer;
 }
+ .p-3{
+    padding: 1.5rem;
+ }

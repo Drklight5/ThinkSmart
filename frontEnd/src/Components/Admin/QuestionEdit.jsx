@@ -13,6 +13,7 @@ export default function Question() {
         setQuiz(prev => ({ ...prev, questions: newQuestions }));
     }
 
+    
     return (
         <div className="d-question">
             <span onClick={moveLeft}>{"<"}</span>

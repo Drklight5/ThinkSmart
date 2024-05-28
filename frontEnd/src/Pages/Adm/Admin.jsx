@@ -1,13 +1,13 @@
 import { Route, Routes, Link} from "react-router-dom"
-import Quizzes from "../Components/Quizzes"
+import Quizzes from "../../Components/Quizzes"
 import { useNavigate } from "react-router-dom"
 import Edit from "./Edit"
 import Create from "./Create"
-import Chatbot from "./chatbot" // Asegúrate de que esta ruta es correcta
+import Chatbot from "../chatbot" // Asegúrate de que esta ruta es correcta
 import { useContext } from "react"
-import UserContext from "../Control/userContext"
+import UserContext from "../../Control/userContext"
 import { useAuthState } from "react-firebase-hooks/auth"
-import { auth } from "../Firebase/firebase"
+import { auth } from "../../Firebase/firebase"
 
 function Admin() {
   const [user, setUser] = useContext(UserContext)
@@ -19,6 +19,7 @@ function Admin() {
           <Route path="/edit/:id" element={<Edit/>} />
           <Route path="/create" element={<Create/>} />
           <Route path="/chatbot" element={<Chatbot/>} />
+
 
           <Route path="/" element={
             <>

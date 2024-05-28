@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
-import UserContext from '../Control/userContext'
-import { _UserManager } from '../Control/API'
+import UserContext from '../../Control/userContext'
+import { _UserManager } from '../../Control/API'
 import { useNavigate } from 'react-router-dom'
 
 export default function NewUser() {
