@@ -1,5 +1,6 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { GoogleGenerativeAI } from "@google/generative-ai";
+import QuizContext from '../../Control/quizContext';
 
 // Modal component
 function Modal({ isOpen, onClose, content }) {
@@ -18,10 +19,12 @@ function Modal({ isOpen, onClose, content }) {
 }
 
 // Main component
-export default function ExplainAnswer({ pregunta }) {
+export default function ExplainAnswer() {
     const clave = "AIzaSyA9u7fPHlhINLHhXX0VsWnTNiDN9tfgn6s";
     const genAI = new GoogleGenerativeAI(clave);
     const model = genAI.getGenerativeModel({ model: "gemini-pro" });
+
+    const [quiz, setQuiz] = useContext(QuizContext)
 
     const [resultadoConsulta, setResultadoConsulta] = useState('');
     const [modalOpen, setModalOpen] = useState(false);
@@ -29,7 +32,7 @@ export default function ExplainAnswer({ pregunta }) {
 
     const handleConsulta = async () => {
         setLoading(true);
-        const prompt = `Explica por qué la respuesta ${pregunta.selected} está mal para esta pregunta ${pregunta.texto} con las opciones ${pregunta.opciones}`;
+        const prompt = `Explica por qué la respuesta ${quiz.preguntas[quiz.position].selected} está mal para esta pregunta ${quiz.preguntas[quiz.position].texto} con las opciones ${quiz.preguntas[quiz.position].opciones}`;
         try {
             const result = await model.generateContent(prompt);
             const response = await result.response;
@@ -44,18 +47,22 @@ export default function ExplainAnswer({ pregunta }) {
     };
 
     return (
-        <div style={{ maxWidth: '600px', padding: '30px', margin: '0 auto' }}>
-            <h1 style={{ fontSize: '1.5rem', marginBottom: '30px', textAlign: 'center' }}>Explicación de Respuesta</h1>
-            <button
-                type="button"
-                id="botonConsulta"
-                style={{ display: 'block', margin: '30px auto 0 auto', padding: '10px 20px', border: '1px solid #000', borderRadius: '5px', backgroundColor: '#000', color: '#fff', cursor: 'pointer' }}
-                onClick={handleConsulta}
-                disabled={loading}
-            >
-                {loading ? 'Consultando...' : 'Consultar'}
-            </button>
-            <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} content={resultadoConsulta} />
+        <div>
+            {
+                quiz.preguntas[quiz.position].check == true && <>
+                    <button
+                        type="button"
+
+                        id="botonConsulta"
+                        style={{ display: 'block', margin: '30px auto 0 auto', padding: '10px 20px', border: '1px solid #000', borderRadius: '5px', backgroundColor: '#000', color: '#fff', cursor: 'pointer' }}
+                        onClick={handleConsulta}
+                        disabled={loading}
+                    >
+                        {loading ? 'Consultando...' : 'Consultar'}
+                    </button>
+                    <Modal isOpen={modalOpen} onClose={() => setModalOpen(false)} content={resultadoConsulta} />
+                </>
+            }
         </div>
     );
 }
@@ -90,4 +97,5 @@ const modalCloseStyle = {
 
 const modalBodyStyle = {
     padding: '10px 0',
+    maxWidth: '50vw'
 };

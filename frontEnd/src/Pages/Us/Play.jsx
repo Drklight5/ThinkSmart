@@ -8,6 +8,7 @@ import Send from "../../Components/Quiz/Send";
 import Avatars from "../../Components/Quiz/Avatars";
 import Trust from "../../Components/Quiz/Trust";
 import { _QuizManager } from "../../Control/API";
+import ExplainAnswer from "./IA";
 
 export default function Play() {
     const {id} = useParams();
@@ -38,10 +39,12 @@ export default function Play() {
             {
               (quiz != null) && <>
                 <h1 className="t-white">{quiz.nombre}</h1>
+               
                 <Question></Question>
                 <Avatars></Avatars>
                 <Options></Options>
-                <Trust></Trust>
+                <Trust></Trust> 
+                <ExplainAnswer/>
                 <Send></Send>
               </>
             }
