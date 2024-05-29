@@ -1,31 +1,61 @@
-// import { useContext } from "react";
-// import QuizContext from "../../Control/quizContext";
-// fuente: https://codepen.io/brandonmcconnell/pen/Zqjdmg
-import "./quiz.scss"
+import { useContext, useEffect, useState } from "react";
+import QuizContext from "../../Control/quizContext";
+import "./quiz.scss";
 
 const Trust = () => {
-    // const [quiz, setQuiz] = useContext(QuizContext)
+    const [quiz, setQuiz] = useContext(QuizContext);
+    const [confidence, setConfidence] = useState(0)
 
+    useEffect(() => {
+        const Confidence = quiz?.preguntas[quiz.position]?.confianza;
+        const options = JSON.parse(quiz.confianza);
+        const c = options.indexOf(Confidence) != -1
+            ? options.indexOf(Confidence)
+            : Math.floor(options.length / 2);
+
+        setConfidence(c);
+        onChange(c)
+    }, [quiz.position]);
+
+    const onChange = (i) => {
+        let a = JSON.parse(quiz.confianza);
+        let copy = { ...quiz };
+        copy.preguntas[copy.position].confianza = a[i];
+        setQuiz(copy);
+
+        console.log(copy)
+        setConfidence(i);
+    };
 
     return (
         <div className="trust-div">
-         
-            <div id="htmlForm-wrapper">
-                <htmlForm className="confidence t-primary">
-                    <p id="htmlForm-title ">Trust</p>
+            <div id="form-wrapper">
+                <form className="confidence t-primary">
+                    <p id="form-title">Nivel de confianza</p>
                     <div id="debt-amount-slider">
-                        <input type="radio" name="debt-amount" id="1" value="0" required />
-                        <label htmlFor="1" data-debt-amount="Bajo"></label>
-                        <input type="radio" name="debt-amount" id="2" value="1" required />
-                        <label htmlFor="2" data-debt-amount="Medio"></label>
-                        <input type="radio" name="debt-amount" id="3" value="2" required />
-                        <label htmlFor="3" data-debt-amount="Alto"></label>
+                        {
+                            JSON.parse(quiz.confianza).map((e, i) => (
+                                <>
+                                    <input
+                                        key={i}
+                                        type="radio"
+                                        name="debt-amount"
+                                        id={1 + i}
+                                        value={i}
+                                        required
+                                        onChange={() => onChange(i)}
+                                        checked={confidence === i}
+                                    />
+                                    <label htmlFor={i + 1} data-debt-amount={e}></label>
+                                </>
+                            ))
+                        }
                         <div id="debt-amount-pos"></div>
                     </div>
-                </htmlForm>
+                </form>
             </div>
-
         </div>
-    )
-}
-export default Trust
+    );
+};
+
+export default Trust;

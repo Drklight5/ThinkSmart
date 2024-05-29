@@ -18,7 +18,8 @@ export default function Question() {
         <div className="bg-white quest">
             <div className="preg">PREGUNTA {quiz.position + 1}</div>
             <div className="admin"></div>
-            {quiz?.questions[quiz.position]?.question}
+            
+            {quiz?.preguntas[quiz.position]?.texto}
         </div>
         
 

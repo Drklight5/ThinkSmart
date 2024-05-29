@@ -1,51 +1,58 @@
-import { useContext} from "react"
-import QuizContext from "../../Control/quizContext"
+import { useContext, useEffect, useState } from "react";
+import QuizContext from "../../Control/quizContext";
 
 export default function Options() {
-    // eslint-disable-next-line no-unused-vars
-  const [quiz, setQuiz] = useContext(QuizContext)
-  const options = quiz?.questions[quiz.position]?.options
+  const [quiz, setQuiz] = useContext(QuizContext);
+  const [opciones, setOptions] = useState(() => {
+    const currentOptions = quiz?.preguntas[quiz.position]?.opciones;
+    return typeof currentOptions === 'string' ? JSON.parse(currentOptions) : currentOptions;
+  });
 
-  const selectOpt = (i) => {
+  useEffect(() => {
+    const currentOptions = quiz?.preguntas[quiz.position]?.opciones;
+    setOptions(typeof currentOptions === 'string' ? JSON.parse(currentOptions) : currentOptions);
+  }, [quiz]);
 
-    let qs = quiz.questions
-    let se = qs[quiz.position].selected 
-    let s = se  == i ? null : i
-   
-    qs[quiz.position].selected = s
-    setQuiz(prev => ({...prev, questions: qs}))
-  }
+
 
   const optStyle = (i) => {
-    let q = quiz.questions[quiz.position]
- 
-    let s = ""
-    if (q.check == true ) {
-      if (i == q.selected) s = "selectOpt-true" 
-      if (q.correct != i && i == q.selected) s = "selectOpt-false"
-  
-    }else{
-      s = q.selected == i ? "selectOpt" : ""
-    }
-    return "opt " + s
+    let q = quiz.preguntas[quiz.position];
 
-  }
+    let s = "";
+    if (q.check === true && opciones[i] == q.selected) {
+      console.log(q)
+      s = (q.correcta === opciones[i]) ? "selectOpt-true": "selectOpt-false"
+    } 
+    else  s = q.selected === opciones[i] ? "selectOpt" : "";
+    
+    return "opt " + s;
+  };
 
   const select = (i) => {
-    let c = quiz.questions[quiz.position].check
-    if (c != true) selectOpt(i)
-    
-  } 
+    let c = quiz.preguntas[quiz.position].check;
+    if (c !== true) selectOpt(i);
+  };
 
+  const selectOpt = (i) => {
+    let qs = quiz.preguntas;
+    let se = qs[quiz.position].selected;
+
+    qs[quiz.position].selected = opciones[i];
+    setQuiz((prev) => ({ ...prev, preguntas: qs }));
+  };
   return (
     <div className="d-options">
-        {options?.map((opt, i) =>
-            <div key={i} 
-              onClick={() => select(i)}
-              className={optStyle(i)}>
-                {opt}
-            </div>
-        )}
+      {opciones?.map((opt, i) => (
+        <div
+          key={i}
+          onClick={() => select(i)}
+          className={optStyle(i)}
+        >
+          {opt}
+        </div>
+      ))}
+
     </div>
-  )
+
+  );
 }

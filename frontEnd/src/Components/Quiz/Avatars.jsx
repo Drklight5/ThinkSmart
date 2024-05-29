@@ -5,7 +5,7 @@ import QuizContext from "../../Control/quizContext"
 export default function Avatars() {
     // eslint-disable-next-line no-unused-vars
     const [quiz, setQuiz] = useContext(QuizContext)
-    const q = quiz?.questions[quiz.position]
+    const q = quiz?.preguntas[quiz.position]
 
 
     const sty_av = () => {
@@ -20,8 +20,9 @@ export default function Avatars() {
 
     const sty_main = () => {
         let s = "main-avatar "
+        
         if (q?.check) {
-            return s + (q.selected == q.correct ? "selectOpt-true" : "selectOpt-false")
+            return s + (q.selected == q.correcta? "selectOpt-true" : "selectOpt-false")
         }
         else {
             return s
@@ -30,6 +31,7 @@ export default function Avatars() {
 
   return (
     <div className="avatars">
+
         <div className={sty_av()}>
 
         </div>

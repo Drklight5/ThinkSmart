@@ -14,7 +14,7 @@ export default function NewQuestion() {
     const addQuestion = () => {
         const newQuestion = {
             texto: "",
-            opciones: ["Opción 1", "Opción 2", "Opción 3", "Option 4"],
+            opciones: '["Opción 1", "Opción 2", "Opción 3", "Option 4"]',
             correcta: null,
             idPregunta: null
         }

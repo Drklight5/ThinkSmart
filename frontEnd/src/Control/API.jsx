@@ -194,7 +194,23 @@ export const _QuizManager = {
         return API.call('answerQuestion', 'POST', value);
     },
     //13 Trae todos los resultados generados por ese quiz
-    getQuizResults: (idUser, idQuiz) => {
-        return API.call(`ObtenerResultados?idUser=${idUser}&idQuiz=${idQuiz}`, 'GET', {});
+    getQuizResults: (idQuiz) => {
+        return API.call(`ObtenerResultados?&idQuiz=${idQuiz}`, 'GET', {});
+        
+    },
+    modificarPregunta: (idPregunta, texto, opciones, correcta)=>{
+        const value = {
+            idPregunta:idPregunta,
+            texto : texto,
+            opciones: opciones,
+            correcta: correcta
+        }
+        return API.call('modificarPregunta', 'POST', value)
     }
+}
+
+
+export const _History = {
+    getHistoryId: (p_idUser, p_idQuiz) =>  
+        API.call(`AddHistorialEntry?p_idUser=${p_idUser}&p_idQuiz=${p_idQuiz}`,"GET",{}),
 }

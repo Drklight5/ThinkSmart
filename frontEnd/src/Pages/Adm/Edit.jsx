@@ -7,18 +7,18 @@ import NewQuestion from "../../Components/Admin/NewQuestion";
 import { _QuizManager } from "../../Control/API";
 
 export default function Play() {
-  const {id} = useParams();
+  const { id } = useParams();
   const [quiz, setQuiz] = useState(null)
 
   useEffect(() => {
-     callQuiz()
+    callQuiz()
 
   }, [id])
 
-  const callQuiz =  async () => {
+  const callQuiz = async () => {
     let a = await _QuizManager.getQuiz(id)
     let b = await _QuizManager.getQuestions(id)
-    a =  a[0]
+    a = a[0]
     a.position = 0
     a.questions = b
 
@@ -27,33 +27,42 @@ export default function Play() {
   }
 
   const handleNameChange = (event) => {
-      setQuiz(prev => ({...prev, name: event.target.value}))
+    setQuiz(prev => ({ ...prev, nombre: event.target.value }))
   }
 
-  const saveQuiz = async () =>{
-    let a = _QuizManager.modifyQuiz()
+  const saveQuiz = async () => {
+
+      // Primero modificar el quiz sin las preguntas y sin el valor de "position"
+      let response = await _QuizManager.modifyQuiz(quiz.idQuiz, quiz.nombre, quiz.descripcion, quiz.confianza);
+
+      // Luego actualizar cada pregunta
+      for (let pregunta of quiz.questions) {
+        response = await _QuizManager.modificarPregunta(pregunta.idPregunta, pregunta.texto, pregunta.opciones, pregunta.correcta);
+      }
+
   }
   return (
-      <QuizContext.Provider value={[quiz, setQuiz]}>
-            {quiz != null ? <>
-                <h1 className="materia">
-                    {console.log(quiz )}
-                    <input 
-                        type="text" 
-                        value={quiz.nombre} 
-                        onChange={handleNameChange} 
-                    />
-                </h1>
-                
-                <QuestionEdit></QuestionEdit>
-                <OptionsEdit></OptionsEdit>
-                <NewQuestion></NewQuestion>
-                <button onClick={saveQuiz}>Guardar cambios</button>
-            </>
-            :
-            <p>Cargando el Quiz</p>
-            }
-          
-      </QuizContext.Provider>
+    <QuizContext.Provider value={[quiz, setQuiz]}>
+      {quiz != null ? <>
+        <h1 className="materia">
+          {console.log(quiz)}
+          <input
+            type="text"
+            value={quiz.nombre}
+            onChange={handleNameChange}
+          />
+        </h1>
+
+        <QuestionEdit></QuestionEdit>
+        <OptionsEdit></OptionsEdit>
+        <NewQuestion></NewQuestion>
+
+        <button onClick={saveQuiz} className="t-white btn-send pointer bg-secondary">Guardar cambios</button>
+      </>
+        :
+        <p>Cargando el Quiz</p>
+      }
+
+    </QuizContext.Provider>
   )
 }
