@@ -70,58 +70,141 @@ const API = {
     }
 }
 
-
 export const _UserManager = {
     getUser: (uid) => {
-        return API.call(`getUserOrAdmin?id=${uid}`, 'GET', {})
+        return API.call(`getUserOrAdmin?id=${uid}`, 'GET', {});
     },
 
-    createUser: (value) => { 
-        return API.call('addUser', 'POST',value)
+    createUser: (idAut, nombre, apellido) => {
+        const value = {
+            idAut: idAut,
+            nombre: nombre,
+            apellido: apellido
+        };
+        return API.call('addUser', 'POST', value);
     },
-    createAdmin: (value) => { 
-        if (copy.role == 'admin') navigate('/admin')
 
+    createAdmin: (idAut, nombre, apellido) => {
+        const value = {
+            idAut: idAut,
+            nombre: nombre,
+            apellido: apellido
+        };
+        return API.call('addAdmin', 'POST', value);
     }
 }
 
-
 export const _Groups = {
     //1 Trae todos los grupos
-    getGroups: (uid) => { },
-    //2 Crea un grupo nuevo role: admin 
-    createGroup: (uid, group) => { },
-    //3 Regresa la lista de alumnos de un grupo role:admin
-    getUserGroup: (uid) => {},
-    //4 Une al usuario a un grupo role:user
-    joinGroup: (uid, groupID) => { },
-    //5 Elimina un grupo role:admin
-    deleteGroup: (uid, groupID) => {
-    }
+    getGroups: (uid) => {
+        return API.call(`getUserGroup?uid=${uid}`, 'GET', {});
+    },
 
+    //2 Crea un grupo nuevo role: admin 
+    createGroup: (idAdmin, nombreGrupo) => {
+        const group = {
+            idAdmin: idAdmin,
+            nombreGrupo: nombreGrupo
+        };
+        return API.call('createGroup', 'POST', group);
+    },
+
+    //3 Regresa la lista de alumnos de un grupo role:admin
+    getUserGroup: (grupoID) => {
+        return API.call(`ObtenerAlumnosPorGrupo?grupoID=${grupoID}`, 'GET', {});
+    },
+
+    //4 Une al usuario a un grupo role:user
+    joinGroup: (idUser, idGrupo) => {
+        const value = {
+            idUser: idUser,
+            idGrupo: idGrupo
+        };
+        return API.call('joinGroup', 'POST', value);
+    },
+
+    //5 Elimina un grupo role:admin
+    deleteGroup: (groupID) => {
+        const value = {
+            groupID: groupID
+        };
+        return API.call('deleteGroup', 'POST', value);
+    }
 }
 
 export const _QuizManager = {
     //6 Regresa la lista de quizzes relacionados al usuario
-    getQuizzes: (id) => { 
-        return API.call(`ObtenerQuizzesPorUsuario?userID=${id}`, 'GET', {}) 
+    getQuizzes: () => {
+        return API.call(`getQuizz`, 'GET', {});
     },
+
     //7 Crea un nuevo quiz role:Admin
-    createQuiz: (uid, quiz) => {},
+    createQuiz: (Nombre, Descripcion, Confianza) => {
+        const quiz = {
+            Nombre: Nombre,
+            Descripcion: Descripcion,
+            Confianza: Confianza
+        };
+        return API.call('CrearNuevoQuiz', 'POST', quiz);
+    },
+
     //8 modifica la informacion de un quiz
-    modifyQuiz: (quizID, quiz) => { },
+    modifyQuiz: (quizID, Nombre, Descripcion, Confianza) => {
+        const quiz = {
+            quizID: quizID,
+            Nombre: Nombre,
+            Descripcion: Descripcion,
+            Confianza: Confianza
+        };
+        return API.call('modifyQuiz', 'POST', quiz);
+    },
+
     //9 Elimina un quiz
-    deleteQuiz: (quizID) => { },
+    deleteQuiz: (quizID) => {
+        const value = {
+            quizID: quizID
+        };
+        return API.call('deleteQuiz', 'POST', value);
+    },
+
+
     //10 Devuelve la informacion del quiz mas todas las preguntas del quiz
-    getQuiz: (quizID) => { },
+    getQuiz: (quizID) => {
+        return API.call(`getQuiz?quizID=${quizID}`, 'GET', {});
+    },
+    getQuizAdmin: (quizID) => {
+        return API.call(`getQuizzAdmin?quizID=${quizID}`, 'GET', {});
+    },
+
+    getQuestions: (quizID) =>{
+        return API.call(`ObtenerPreguntasPorQuiz?quizID=${quizID}`, 'GET', {});
+        
+    },
+    
     //11 Agrega una pregunta al quiz
-    addQuestion: (quizID, question) => { },
+    addQuestion: (quizID, questionTexto, questionCorrecta, questionOpciones) => {
+        const question = {
+            quizID: quizID,
+            questionTexto: questionTexto,
+            questionCorrecta: questionCorrecta,
+            questionOpciones: questionOpciones
+        };
+        return API.call('addQuestion', 'POST', question);
+    },
+
     //12 El usuario responde una pregunta 
-    answerQuestion: (uid, idQuestion, response) => { },
+    answerQuestion: (uid, idQ, response, rConf, idHist) => {
+        const value = {
+            uid: uid,
+            idQ: idQ,
+            response: response,
+            rConf: rConf,
+            idHist: idHist
+        };
+        return API.call('answerQuestion', 'POST', value);
+    },
     //13 Trae todos los resultados generados por ese quiz
-    getQuizResults: (idQuiz) => { }
-
+    getQuizResults: (idUser, idQuiz) => {
+        return API.call(`ObtenerResultados?idUser=${idUser}&idQuiz=${idQuiz}`, 'GET', {});
+    }
 }
-
-// export const _AdminManager = {
-// }

@@ -13,8 +13,8 @@ export default function Quizzes() {
   }, []);
 
   const getQuiz = async () => {
-    let quiz = await _QuizManager.getQuizzes(user.id)
-    console.log(quiz)
+    let quiz = await _QuizManager.getQuizzes()
+    setQuizzes(quiz)
   }
 
   return (

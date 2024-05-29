@@ -13,11 +13,10 @@ export default function NewQuestion() {
 
     const addQuestion = () => {
         const newQuestion = {
-            question: "",
-            options: ["Opción 1", "Opción 2", "Opción 3"],
-            answer: null,
-            selected: null,
-            check: false
+            texto: "",
+            opciones: ["Opción 1", "Opción 2", "Opción 3", "Option 4"],
+            correcta: null,
+            idPregunta: null
         }
 
         setQuiz(prev => ({

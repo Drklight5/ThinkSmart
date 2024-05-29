@@ -22,7 +22,7 @@ export default function Question() {
                 {/* <div className="admin"></div> */}
                 <input
                     type="text"
-                    value={quiz?.questions[quiz.position]?.question}
+                    value={quiz?.questions[quiz.position]?.texto}
                     onChange={handleQuestionChange}
                 />
             </div>

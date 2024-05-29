@@ -9,6 +9,8 @@ import NewUser from './Pages/Aut/NewUser'
 import {Bounce, ToastContainer} from 'react-toastify'
 import Chatbot from './Pages/chatbot'
 import { useAuthState } from 'react-firebase-hooks/auth'
+
+import 'react-toastify/dist/ReactToastify.css';
 import { auth } from './Firebase/firebase'
 
 

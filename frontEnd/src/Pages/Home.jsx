@@ -5,6 +5,7 @@ import UserContext from "../Control/userContext";
 import { Navigate, Routes, Route } from "react-router-dom";
 import User from "./Us/User";
 import Admin from "./Adm/Admin";
+import MainResults from "./Results/MainResults"
 import Fondo from "../Components/Fondo";
 import ShowUser from "../Components/ShowUser";
 
@@ -26,6 +27,7 @@ function Home() {
 				<Routes>
 					<Route path="/user/*" element={<User />} when={user?.role === "user"} />
 					<Route path="/admin/*" element={<Admin />} when={user?.role === "admin"} />
+					<Route path="/results/:id" element={<MainResults/>} />
 				</Routes>
 			</div>
 			

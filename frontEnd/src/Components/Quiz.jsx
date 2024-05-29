@@ -12,24 +12,25 @@ export default function Quiz({quiz}) {
 
   const navigate = useNavigate()
   
-  const isUser = user.role == "User"
+  const isUser = user.role == "user"
   const text = isUser ? "Iniciar" : "Editar"
   let   link = isUser ? "play" : "edit"
-        link += "/" + quiz.id
+        link += "/" + quiz.idQuiz
 
   const redirect = () => navigate(link)
-
+  const seeResults = () => navigate('/results/' + quiz.idQuiz)
 
   return (
     <div className="quiz">
         <div>
-              <h2 color="t-primary">{quiz.name}</h2>
+              <h2 color="t-primary">{quiz.nombre}</h2>
               <br />
-              {quiz.topic}
+              {quiz.descripcion}
         </div>
 
         <div className="">
-            <button className="bg-secondary t-white" onClick={redirect}>{text}</button>
+            <button className="bg-secondary t-white " onClick={seeResults}> Resultados </button>
+            <button className="bg-secondary t-white mx-3" onClick={redirect}> {text} </button>
         </div>
     </div>
   )

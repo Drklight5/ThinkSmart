@@ -17,8 +17,10 @@ export default function Auth() {
         let db_user = await _UserManager.getUser(user.uid) 
         console.log(db_user)
         if (db_user.length == 0) {
+            setUser(user)
             console.log("a")
             navigate("/NewUser")}
+            
         let copy = user
         copy.id = db_user[0].id
         copy.role = db_user[0].type
