@@ -75,21 +75,11 @@ export const _UserManager = {
         return API.call(`getUserOrAdmin?id=${uid}`, 'GET', {});
     },
 
-    createUser: (idAut, nombre, apellido) => {
-        const value = {
-            idAut: idAut,
-            nombre: nombre,
-            apellido: apellido
-        };
+    createUser: (value) => {
         return API.call('addUser', 'POST', value);
     },
 
-    createAdmin: (idAut, nombre, apellido) => {
-        const value = {
-            idAut: idAut,
-            nombre: nombre,
-            apellido: apellido
-        };
+    createAdmin: (value) => {
         return API.call('addAdmin', 'POST', value);
     }
 }
