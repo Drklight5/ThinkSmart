@@ -32,29 +32,10 @@ export default function Play() {
       console.log(a)
       setQuiz(a)
     }
-
-  // const handleNameChange = (event) => {
-  //   setQuiz(prev => ({ ...prev, nombre: event.target.value }))
-  // }
-
-  // const saveQuiz = async () => {
-
-  //   // Primero modificar el quiz sin las preguntas y sin el valor de "position"
-  //   let response = await _QuizManager.modifyQuiz(quiz.idQuiz, quiz.nombre, quiz.descripcion, quiz.confianza);
-
-  //   // Luego actualizar cada pregunta
-  //   for (let pregunta of quiz.questions) {
-  //     response = await _QuizManager.modificarPregunta(pregunta.idPregunta, pregunta.texto, pregunta.opciones, pregunta.correcta);
-  //   }
-
-  // }
-    
   return (
     <>
        <QuizContext.Provider value={[quiz, setQuiz]}>
-            
-            { 
-
+            {
               (quiz != null) && <>
                 <h1 className="t-white">{quiz.nombre}</h1>
                 <Question></Question>

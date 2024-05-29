@@ -34,9 +34,25 @@ export default function MainResults() {
   return (
     <div>
       <h1>RESULTADOS</h1>
-      {results?.map((e,i)=>
-        <p key ={i}> Pregunta: {e.pregunta} Confianza: {e.confianza} Resultado: {e.correcta}</p>
-      )}
+
+      <table>
+        <thead>
+          <th></th>
+          <th>Nombre</th>
+          <th>Nombre</th>
+          <th>Puntos</th>
+        </thead>
+        <tbody>
+          {results?.map((e,i)=>
+            <tr key={i}>
+              <td>{i+1}</td>
+              <td> Pregunta: {e.pregunta} Confianza: {e.confianza} Resultado: {e.correcta}</td>
+            </tr>
+          )}
+        </tbody>
+      
+      
+      </table>
     </div>
 
   )
