@@ -26,9 +26,9 @@ function Admin() {
         <Route path="/" element={
           <>
             <h1 className=""> QUIZZES</h1>
-            <Link to="groups" style={{ textDecoration: 'none' }}>
+            {/* <Link to="groups" style={{ textDecoration: 'none' }}>
               <button className="btn bg-secondary">Grupos</button>
-            </Link>
+            </Link> */}
             <Quizzes></Quizzes>
             <div className="flex fx-j-cen">
               <Link to="create" style={{ textDecoration: 'none' }}>

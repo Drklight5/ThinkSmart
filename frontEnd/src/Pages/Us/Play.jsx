@@ -27,7 +27,7 @@ export default function Play() {
       a = a[0]
       a.position = 0
       a.preguntas = b.map((p) => ({...p, confianza:'', selected:''}))
-      a.preguntas = a.preguntas.slice(0,3)
+      a.preguntas = a.preguntas.slice(0,10)
 
      
       console.log(a)

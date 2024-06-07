@@ -71,7 +71,7 @@ export default function NewUser() {
         value = {value.apellido}
         onChange={(e) => handleInputChange(e)}
       />
-      <button onClick={onAdmin}>Ser Admin</button>
+      {/* <button onClick={onAdmin}>Ser Admin</button> */}
       <button onClick={onUser}>Ser User</button>
     </div>
   )

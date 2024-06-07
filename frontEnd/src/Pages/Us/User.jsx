@@ -12,7 +12,7 @@ function User() {
         <Route path="" element={
           <div>
             <h1 className="t-white"> QUIZZES</h1>
-            <Link to="grupo" className="t-white" >Grupos</Link>
+            {/* <Link to="grupo" className="t-white" >Grupos</Link> */}
             <Quizzes></Quizzes>
             <div className="flex fx-j-rig">
               <Link to="/chatbot" style={{ textDecoration: 'none' }}>

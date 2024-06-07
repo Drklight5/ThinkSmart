@@ -43,7 +43,7 @@ export default function Send() {
       let confianza = JSON.parse(quiz.confianza).indexOf(element.confianza)
 
       console.log(User.id, quiz.idQuiz, correcta, confianza, idH)
-      let p = _QuizManager.answerQuestion(User.id,quiz.idQuiz,correcta,confianza, idH)
+      let p = _QuizManager.answerQuestion(User.id,element.idPregunta,correcta,confianza, idH)
       
     });
 

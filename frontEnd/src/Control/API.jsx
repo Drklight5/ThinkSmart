@@ -195,8 +195,7 @@ export const _QuizManager = {
     },
     //13 Trae todos los resultados generados por ese quiz
     getQuizResults: (idQuiz) => {
-        return API.call(`ObtenerResultados?&idQuiz=${idQuiz}`, 'GET', {});
-        
+        return API.call(`getRanking?&p_idQuiz=${idQuiz}`, 'GET', {});
     },
     modificarPregunta: (idPregunta, texto, opciones, correcta)=>{
         const value = {

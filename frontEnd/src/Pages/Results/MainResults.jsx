@@ -1,138 +1,24 @@
-import React, { useContext, useEffect, useState } from 'react'
-import UserContext from '../../Control/userContext'
-import { useParams } from 'react-router-dom'
-import { _QuizManager } from '../../Control/API'
+import React, { useContext, useEffect, useState } from 'react';
+import UserContext from '../../Control/userContext';
+import { useParams } from 'react-router-dom';
+import { _QuizManager } from '../../Control/API';
 
 export default function MainResults() {
-  // getQuizResults: (idUser, idQuiz) => {
-  //   return API.call(`ObtenerResultados?idUser=${idUser}&idQuiz=${idQuiz}`, 'GET', {});
-  // },
-  // getQuiz: (quizID) => {
-  //   return API.call(`getQuiz?quizID=${quizID}`, 'GET', {});
-  // },
+  const [User, setUser] = useContext(UserContext);
+  const [quiz, setQuiz] = useState(null);
+  const [results, setResults] = useState(null);
+  const { id } = useParams();
 
-  const [User, setUser] = useContext(UserContext)
-  const [quiz, setQuiz] = useState(null)
-  const [results, setResults] = useState(null)
-  const {id} = useParams()
-
-
-  const resultados  = [
-    {
-      nombre: 'Valeria', 
-      preguntas: [
-        {
-          resultado: false,
-          confianza: 2
-        },
-        {
-          resultado: true,
-          confianza:1
-        },
-        {
-          resultado: true,
-          confianza: 0
-        }
-      ]
-    },
-    {
-      nombre: 'Kevin',
-      preguntas: [
-        {
-          resultado: false,
-          confianza: 2
-        },
-        {
-          resultado: true,
-          confianza: 1
-        },
-        {
-          resultado: true,
-          confianza: 0
-        }
-      ]
-    },
-    {
-      nombre: 'Oscar',
-      preguntas: [
-        {
-          resultado: false,
-          confianza: 2
-        },
-        {
-          resultado: true,
-          confianza: 1
-        },
-        {
-          resultado: true,
-          confianza: 0
-        }
-      ]
-    },
-    {
-      nombre: 'David',
-      preguntas: [
-        {
-          resultado: true,
-          confianza: 2
-        },
-        {
-          resultado: true,
-          confianza: 1
-        },
-        {
-          resultado: true,
-          confianza: 2
-        }
-      ]
-    },
-    {
-      nombre: 'Diego',
-      preguntas: [
-        {
-          resultado: true,
-          confianza: 2
-        },
-        {
-          resultado: true,
-          confianza: 1
-        },
-        {
-          resultado: true,
-          confianza: 0
-        }
-      ]
-    },
-    {
-      nombre: 'Bento',
-      preguntas: [
-        {
-          resultado: false,
-          confianza: 3
-        },
-        {
-          resultado: true,
-          confianza: 2
-        },
-        {
-          resultado: true,
-          confianza: 1
-        }
-      ]
-    }
-  ]
-  
+  const resultados = [
+    // Tus datos de resultados aquí...
+  ];
 
   useEffect(() => {
-    //callResults()  // Calcular el puntaje para cada persona
-    calcularPuntaje(resultados);
-    // Ordenar los resultados por puntaje
-    const resultadosOrdenados = ordenarPorPuntaje(resultados);
-    setResults(resultadosOrdenados)
+    callResults(); // Llama a la función al montar el componente
+    const interval = setInterval(callResults, 5000); // Llama a la función cada 5 segundos
+    return () => clearInterval(interval); // Limpia el intervalo al desmontar el componente
+  }, []);
 
-
-  }, [])
-  
   // Función para calcular el puntaje total y agregarlo al objeto
   function calcularPuntaje(resultados) {
     resultados.forEach(persona => {
@@ -144,6 +30,7 @@ export default function MainResults() {
       });
       persona.puntaje = puntajeTotal;
     });
+    return resultados
   }
 
   // Función para ordenar los objetos por puntaje de mayor a menor
@@ -151,52 +38,64 @@ export default function MainResults() {
     return resultados.sort((a, b) => b.puntaje - a.puntaje);
   }
 
-  const callQuiz = async () =>{
-    let a = await _QuizManager.getQuiz(id)
-    setQuiz(a[0])
+
+  function transformData(data) {
+    const result = [];
+
+    data.forEach(item => {
+      let user = result.find(u => u.nombre === item.nombreUsuario);
+
+      if (!user) {
+        user = {
+          nombre: item.nombreUsuario,
+          preguntas: []
+        };
+        result.push(user);
+      }
+
+      user.preguntas.push({
+        resultado: !!item.correcta, // convierte 1 a true y 0 a false
+        confianza: item.confianza
+      });
+    });
+
+    return result;
   }
-  
-  const callResults =  async () => {
-    console.log(User.id, id)
-    let a = await _QuizManager.getQuizResults( id)
-    setResults(a)
-    
-  }
+
+  const callResults = async () => {
+    console.log(id);
+    let a = await _QuizManager.getQuizResults(id);
+    let b = transformData(a)
+    let c = calcularPuntaje(b)
+
+    const resultadosOrdenados = ordenarPorPuntaje(c);
+
+    setResults(resultadosOrdenados);
+  };
+
   return (
     <div>
       <h1>RESULTADOS</h1>
-
       <table className='table-resultados'>
         <thead className='table-resultados-head'>
-          <th></th>
-          <th>Nombre</th>
-          {  results != null?  results[0].preguntas.map((e,i) =>
-
-            <th key={i}>{i+1} </th>
-
-          ) : <></>
-          
-        }
-          <th>Puntos finales</th>
+          <tr>
+            <th></th>
+            <th>Nombre</th>
+            {results != null ? results[0].preguntas.map((e, i) => <th key={i}>{i + 1} </th>) : <></>}
+            <th>Puntos finales</th>
+          </tr>
         </thead>
         <tbody className='table-resultados-body'>
-          {results?.map((e,i)=>
+          {results?.map((e, i) => (
             <tr key={i}>
-              <td className='position'>{i+1}</td>
+              <td className='position'>{i + 1}</td>
               <td>{e.nombre}</td>
-              { e.preguntas.map((f, j) =>
-
-                <td key={j} className='points'> {f.resultado ? f.confianza : 0}</td>
-              )} 
-
+              {e.preguntas.map((f, j) => <td key={j} className='points'> {f.resultado ? f.confianza : 0}</td>)}
               <td className='points position'>{e.puntaje}</td>
             </tr>
-          )}
+          ))}
         </tbody>
-      
-      
       </table>
     </div>
-
-  )
+  );
 }
