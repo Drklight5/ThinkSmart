@@ -97,5 +97,4 @@ const modalCloseStyle = {
 
 const modalBodyStyle = {
     padding: '10px 0',
-    maxWidth: '50vw'
 };

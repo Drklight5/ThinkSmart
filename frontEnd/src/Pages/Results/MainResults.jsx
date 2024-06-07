@@ -16,10 +16,141 @@ export default function MainResults() {
   const [results, setResults] = useState(null)
   const {id} = useParams()
 
+
+  const resultados  = [
+    {
+      nombre: 'Valeria', 
+      preguntas: [
+        {
+          resultado: false,
+          confianza: 2
+        },
+        {
+          resultado: true,
+          confianza:1
+        },
+        {
+          resultado: true,
+          confianza: 0
+        }
+      ]
+    },
+    {
+      nombre: 'Kevin',
+      preguntas: [
+        {
+          resultado: false,
+          confianza: 2
+        },
+        {
+          resultado: true,
+          confianza: 1
+        },
+        {
+          resultado: true,
+          confianza: 0
+        }
+      ]
+    },
+    {
+      nombre: 'Oscar',
+      preguntas: [
+        {
+          resultado: false,
+          confianza: 2
+        },
+        {
+          resultado: true,
+          confianza: 1
+        },
+        {
+          resultado: true,
+          confianza: 0
+        }
+      ]
+    },
+    {
+      nombre: 'David',
+      preguntas: [
+        {
+          resultado: true,
+          confianza: 2
+        },
+        {
+          resultado: true,
+          confianza: 1
+        },
+        {
+          resultado: true,
+          confianza: 2
+        }
+      ]
+    },
+    {
+      nombre: 'Diego',
+      preguntas: [
+        {
+          resultado: true,
+          confianza: 2
+        },
+        {
+          resultado: true,
+          confianza: 1
+        },
+        {
+          resultado: true,
+          confianza: 0
+        }
+      ]
+    },
+    {
+      nombre: 'Bento',
+      preguntas: [
+        {
+          resultado: false,
+          confianza: 3
+        },
+        {
+          resultado: true,
+          confianza: 2
+        },
+        {
+          resultado: true,
+          confianza: 1
+        }
+      ]
+    }
+  ]
+  
+
   useEffect(() => {
-    callResults()
+    //callResults()  // Calcular el puntaje para cada persona
+    calcularPuntaje(resultados);
+    // Ordenar los resultados por puntaje
+    const resultadosOrdenados = ordenarPorPuntaje(resultados);
+    setResults(resultadosOrdenados)
+
+
   }, [])
   
+  // Función para calcular el puntaje total y agregarlo al objeto
+  function calcularPuntaje(resultados) {
+    resultados.forEach(persona => {
+      let puntajeTotal = 0;
+      persona.preguntas.forEach(pregunta => {
+        if (pregunta.resultado === true) {
+          puntajeTotal += pregunta.confianza;
+        }
+      });
+      persona.puntaje = puntajeTotal;
+    });
+  }
+
+  // Función para ordenar los objetos por puntaje de mayor a menor
+  function ordenarPorPuntaje(resultados) {
+    return resultados.sort((a, b) => b.puntaje - a.puntaje);
+  }
+
   const callQuiz = async () =>{
     let a = await _QuizManager.getQuiz(id)
     setQuiz(a[0])
@@ -35,18 +166,30 @@ export default function MainResults() {
     <div>
       <h1>RESULTADOS</h1>
 
-      <table>
-        <thead>
+      <table className='table-resultados'>
+        <thead className='table-resultados-head'>
           <th></th>
           <th>Nombre</th>
-          <th>Nombre</th>
-          <th>Puntos</th>
+          {  results != null?  results[0].preguntas.map((e,i) =>
+
+            <th key={i}>{i+1} </th>
+
+          ) : <></>
+          
+        }
+          <th>Puntos finales</th>
         </thead>
-        <tbody>
+        <tbody className='table-resultados-body'>
           {results?.map((e,i)=>
             <tr key={i}>
-              <td>{i+1}</td>
-              <td> Pregunta: {e.pregunta} Confianza: {e.confianza} Resultado: {e.correcta}</td>
+              <td className='position'>{i+1}</td>
+              <td>{e.nombre}</td>
+              { e.preguntas.map((f, j) =>
+
+                <td key={j} className='points'> {f.resultado ? f.confianza : 0}</td>
+              )} 
+
+              <td className='points position'>{e.puntaje}</td>
             </tr>
           )}
         </tbody>
