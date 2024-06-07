@@ -8,15 +8,14 @@ import { getAuth,  GoogleAuthProvider } from "firebase/auth";
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
-  apiKey: "AIzaSyBY1UbQYmhostE6cAN7WXFCoGjjEfw7S7c",
-  authDomain: "thinksmart-78b7d.firebaseapp.com",
-  projectId: "thinksmart-78b7d",
-  storageBucket: "thinksmart-78b7d.appspot.com",
-  messagingSenderId: "422128617538",
-  appId: "1:422128617538:web:982e8c6f2beb680d0dc5db",
-  measurementId: "G-Q02WN53LH7",
+  apiKey: "AIzaSyAyupfxlhZ3VsJ0RKuq6kCmR5d7pl5hyg4",
+  authDomain: "thinksmart-b4ffb.firebaseapp.com",
+  projectId: "thinksmart-b4ffb",
+  storageBucket: "thinksmart-b4ffb.appspot.com",
+  messagingSenderId: "163042044302",
+  appId: "1:163042044302:web:f47d5a3bac8188bd7b5cdf",
+  measurementId: "G-9TZVL1KSDC",
 };
-
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 
